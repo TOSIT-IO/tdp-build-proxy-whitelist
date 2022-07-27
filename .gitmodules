@@ -1,0 +1,39 @@
+[submodule "TDP"]
+	path = TDP
+	url = https://github.com/TOSIT-IO/TDP.git
+[submodule "hadoop"]
+	path = hadoop
+	url = https://github.com/TOSIT-IO/hadoop.git
+[submodule "hive"]
+	path = hive
+	url = https://github.com/TOSIT-IO/hive.git
+[submodule "hive2"]
+	path = hive2
+	url = https://github.com/TOSIT-IO/hive.git
+[submodule "hive1"]
+	path = hive1
+	url = https://github.com/TOSIT-IO/hive.git
+[submodule "tez"]
+	path = tez
+	url = https://github.com/TOSIT-IO/tez.git
+[submodule "spark"]
+	path = spark
+	url = https://github.com/TOSIT-IO/spark.git
+[submodule "spark3"]
+	path = spark3
+	url = https://github.com/TOSIT-IO/spark.git
+[submodule "ranger"]
+	path = ranger
+	url = https://github.com/TOSIT-IO/ranger.git
+[submodule "hbase"]
+	path = hbase
+	url = https://github.com/TOSIT-IO/hbase.git
+[submodule "phoenix"]
+	path = phoenix
+	url = https://github.com/TOSIT-IO/phoenix.git
+[submodule "phoenix-queryserver"]
+	path = phoenix-queryserver
+	url = https://github.com/TOSIT-IO/phoenix-queryserver.git
+[submodule "knox"]
+	path = knox
+	url = https://github.com/TOSIT-IO/knox.git
