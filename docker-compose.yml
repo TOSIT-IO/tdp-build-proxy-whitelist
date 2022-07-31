@@ -1,0 +1,39 @@
+version: '3.4'
+services:
+
+  squid:
+    image: sameersbn/squid:3.5.27-2
+    networks:
+      - internet
+      - no_internet
+    # Uncomment if you want to expose squid port on the host
+    # ports:
+    #   - "3128:3128"
+    volumes:
+      - "${PWD}/squid.conf:/etc/squid/squid.conf"
+      - "${PWD}/cache:/var/spool/squid"
+      - "${PWD}/log:/var/log/squid"
+      - "${PWD}/whitelist.txt:/etc/squid/whitelist.txt"
+
+  tdp_builder:
+    image: tdp-builder
+    environment:
+      - "BUILDER_UID=${BUILDER_UID:-1000}"
+      - "BUILDER_GID=${BUILDER_GID:-1000}"
+    networks:
+      - no_internet
+    command: sleep infinity
+    volumes:
+      - "${PWD}:/build"
+    working_dir: /build
+    ulimits:
+      nofile:
+        soft: 500000
+        hard: 500000
+
+networks:
+  no_internet:
+    driver: bridge
+    internal: true
+  internet:
+    driver: bridge
