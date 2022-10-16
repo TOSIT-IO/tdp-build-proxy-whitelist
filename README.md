@@ -59,6 +59,8 @@ npm config set proxy "http://squid:3128"
 npm config set https-proxy "http://squid:3128"
 mvn clean install -Prelease -Ppackage -Drat.numUnapprovedLicenses=1000 -DskipTests -Dmaven.javdoc.skip=true -Dcheckstyle.skip=true -Dfindbugs.skip=true -Dspotbugs.skip=true -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
 rm ~/.npmrc
+cd /build/hbase-spark-connector
+mvn clean install -Dspark.version=2.3.5-TDP-0.1.0-SNAPSHOT -Dscala.version=2.11.8 -Dscala.binary.version=2.11 -Dhadoop-three.version=3.1.1-TDP-0.1.0-SNAPSHOT -Dhbase.version=2.1.10-TDP-0.1.0-SNAPSHOT -DskipTests -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
 ```
 
 ## How it works
