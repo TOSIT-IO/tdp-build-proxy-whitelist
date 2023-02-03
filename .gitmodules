@@ -37,3 +37,6 @@
 [submodule "knox"]
 	path = knox
 	url = https://github.com/TOSIT-IO/knox.git
+[submodule "hbase-spark-connector"]
+	path = hbase-spark-connector
+	url = https://github.com/TOSIT-IO/hbase-connectors.git

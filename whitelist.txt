@@ -15,3 +15,4 @@ maven.restlet.talend.com                                  # ranger (redirect fro
 repository.cloudera.com                                   # knox (https://repository.cloudera.com/artifactory/cloudera-repos/com/cloudera/api/swagger/cloudera-manager-api-swagger/7.0.3/cloudera-manager-api-swagger-7.0.3.pom)
 jfrog-prod-use1-dedicated-virginia-main.s3.amazonaws.com  # knox (redirect from https://repository.cloudera.com/artifactory/cloudera-repos/com/cloudera/api/swagger/cloudera-manager-api-swagger/7.0.3/cloudera-manager-api-swagger-7.0.3.jar)
 build.shibboleth.net                                      # knox (https://build.shibboleth.net/nexus/content/groups/public/net/shibboleth/tool/xmlsectool/2.0.0/xmlsectool-2.0.0.pom)
+oss.sonatype.org                                          # hbase-spark-connector (https://oss.sonatype.org/content/repositories/snapshots/commons-codec/commons-codec/1.15-SNAPSHOT/commons-codec-1.15-SNAPSHOT.pom)
