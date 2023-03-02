@@ -40,3 +40,6 @@
 [submodule "hbase-spark-connector"]
 	path = hbase-spark-connector
 	url = https://github.com/TOSIT-IO/hbase-connectors.git
+[submodule "hbase-operator-tools"]
+	path = hbase-operator-tools
+	url = https://github.com/TOSIT-IO/hbase-operator-tools.git
