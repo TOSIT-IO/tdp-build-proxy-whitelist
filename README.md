@@ -53,14 +53,14 @@ rm ~/.npmrc
 cd /build/phoenix
 mvn clean install -DskipTests -Dhbase.profile=2.1 -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
 cd /build/phoenix-queryserver
-mvn clean install -Dpackage.phoenix.client -Dphoenix.version=5.1.3-TDP-0.1.0-SNAPSHOT -Dphoenix.client.artifactid=phoenix-client-hbase-2.1 -pl '!phoenix-queryserver-it' -DskipTests -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
+mvn clean install -Dpackage.phoenix.client -pl '!phoenix-queryserver-it' -DskipTests -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
 cd /build/knox
 npm config set proxy "http://squid:3128"
 npm config set https-proxy "http://squid:3128"
 mvn clean install -Prelease -Ppackage -Drat.numUnapprovedLicenses=1000 -DskipTests -Dmaven.javdoc.skip=true -Dcheckstyle.skip=true -Dfindbugs.skip=true -Dspotbugs.skip=true -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
 rm ~/.npmrc
 cd /build/hbase-spark-connector
-mvn clean install -Dspark.version=2.3.5-TDP-0.1.0-SNAPSHOT -Dscala.version=2.11.8 -Dscala.binary.version=2.11 -Dhadoop-three.version=3.1.1-TDP-0.1.0-SNAPSHOT -Dhbase.version=2.1.10-TDP-0.1.0-SNAPSHOT -DskipTests -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
+mvn clean install -DskipTests -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
 cd /build/hbase-operator-tools
 mvn clean install -Dhadoop.profile=3.0 -DskipTests -Dhttps.proxyHost=squid -Dhttps.proxyPort=3128 -Dhttp.proxyHost=squid -Dhttp.proxyPort=3128 -Dmaven.repo.local=/build/m2
 ```
@@ -94,4 +94,23 @@ git submodule update --init hadoop
 # Clean all repositories
 git submodule deinit -f --all
 git submodule update --init
+```
+
+## Reloading Squid configuration
+
+If you modify `squid.conf` or `whitelist.txt`, you can reload Squid configuration without restart by sending `SIGHUP` signal to squid container.
+
+```bash
+docker compose kill -s SIGHUP squid
+```
+
+## Error when building hive2
+
+`pentaho-aggdesigner` `pom` and `jar` are not longer available and must be downloaded manually.
+
+```bash
+mkdir -p m2/org/pentaho/pentaho-aggdesigner{,-algorithm}/5.1.5-jhyde
+wget -P m2/org/pentaho/pentaho-aggdesigner/5.1.5-jhyde 'https://repository.mapr.com/nexus/content/groups/mapr-public/conjars/org/pentaho/pentaho-aggdesigner/5.1.5-jhyde/pentaho-aggdesigner-5.1.5-jhyde.pom'
+wget -P m2/org/pentaho/pentaho-aggdesigner-algorithm/5.1.5-jhyde 'https://repository.mapr.com/nexus/content/groups/mapr-public/conjars/org/pentaho/pentaho-aggdesigner-algorithm/5.1.5-jhyde/pentaho-aggdesigner-algorithm-5.1.5-jhyde.jar'
+wget -P m2/org/pentaho/pentaho-aggdesigner-algorithm/5.1.5-jhyde 'https://repository.mapr.com/nexus/content/groups/mapr-public/conjars/org/pentaho/pentaho-aggdesigner-algorithm/5.1.5-jhyde/pentaho-aggdesigner-algorithm-5.1.5-jhyde.pom'
 ```
